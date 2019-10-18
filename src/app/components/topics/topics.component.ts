@@ -9,9 +9,10 @@ import {TopicService} from '../../services/topic.service'
 export class TopicsComponent implements OnInit {
   topics: Topic[];
 
-  constructor() { 
+  constructor(private topicService:TopicService ) { 
   }
   ngOnInit() {
+    this.topics = this.topicService.getTopic()
   }
 
 }
