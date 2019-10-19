@@ -1,5 +1,9 @@
-<div class= "row">
-<app-topic-item *ngFor="let topic of topics" [topic]="topic">
+<div class= " list-group">
+<app-topic-item 
+*ngFor="let topic of topics" 
+[topic]="topic"
+(deleteTopic) = "deleteTopic($event)"
+>
 </app-topic-item> 
     
 </div>

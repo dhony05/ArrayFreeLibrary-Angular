@@ -1,10 +1,16 @@
 <div [ngClass]="setClasses()"
- class= "col-md-1 border border-secondary">
+ >
     <p>
-        {{ topic.keyword}} ,
-        {{topic.name}},
-        {{topic.contributor}},
-        {{topic.contributor_email}},
-        {{topic.description}},
+        
+        {{topic.name}} by
+        {{topic.contributor}}
     </p>
+    <p>
+        
+    </p>
+    <p>
+    <button (click)="onDelete(topic)" class ="btn-color-red btn-danger">Delete</button>
+
+    </p>
+    
 </div>

@@ -1,34 +1,32 @@
 import { Injectable } from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
+import {Topic} from '../models/topic'
+import { Observable } from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+  'Content-type': 'application/json'
+  })
+}
 @Injectable({
   providedIn: 'root'
 })
 export class TopicService {
+  topicsURL:string = 'http://localhost:8080/topics';
+  topicsLimit = '?_limit=15';
 
-  constructor() { }
+  constructor(private  http:HttpClient) { }
 
-  getTopic(){
-    return [
-      {
-        keyword:"springboot",
-    name:"Spring Boot",
-    contributor:"example",
-    contributor_email:"example@email.com",
-    description:"This is an example"},
-    {
-      keyword:"springboot3",
-    name:"Spring example 4",
-    contributor:"examsdfsdfple",
-    contributor_email:"example@email.com",
-    description:"This is asdfsdfn example"},
-    {
-      keyword:"javascript",
-      name:"js the book",
-      contributor:"example",
-      contributor_email:"example@email.com",
-      description:"This is an example js the book"
-    }
-  ]
+  getTopics():Observable<Topic[]>{
+    return this.http.get<Topic[]>(`${this.topicsURL}${this.topicsLimit}`);
+    
   
+  }
+
+  deleteTopic(topic:Topic):Observable<Topic>{
+    const url = `${this.topicsURL}/${topic.keyword}`;
+    return this.http.delete<Topic>(url,httpOptions);
+
   }
 }
