@@ -1,1 +1,46 @@
-<p>add-topic works!</p>
+<div class = "">
+    <button (click)="toggleCollapse()" class="btn btn-secondary">Contribute here</button>
+    
+    <div *ngIf="!isCollapsed" >
+            <form action="" class="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          
+           
+        
+        <div class="form-group col-md-6">
+            <label for="inputName4">Keyword</label>
+            <input type="text" name="keyword" class="form-control"[(ngModel)] = "keyword" placeholder="ex. Java...">
+
+        </div>
+        <div class="form-group col-md-6">
+                <label for="inputName4">Topic Name</label>
+            <input type="text" name="name" class="form-control"[(ngModel)] = "name"placeholder="ex. Java EE...">
+
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-group col-md-6">
+                <label for="inputName4">Contributor</label>
+            <input type="text" name="contributor" class="form-control"[(ngModel)] = "contributor"placeholder="contributor name...">
+
+        </div>
+         <div class="form-group col-md-6">
+                <label for="inputEmail4">Contributor email</label>
+            <input type="email" name="contributor_email" class="form-control"[(ngModel)] = "contributor_email" placeholder="Contributor email...">
+
+        </div>
+    </div>
+        <div class="form-group ">
+            <label for="inputName4">Description</label>
+            <input type="text" name="description" class="form-control"[(ngModel)] = "description" placeholder="Add some description...">
+
+        </div>
+
+        <input type="submit"  value= "Submit" class="btn">
+        </form>
+
+
+        
+
+    </div>
+</div>
