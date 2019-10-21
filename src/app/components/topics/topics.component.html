@@ -1,3 +1,5 @@
+<div>
+<app-add-topic (addTopic)="addTopic($event)"></app-add-topic>
 <div class= " list-group">
 <app-topic-item 
 *ngFor="let topic of topics" 
@@ -6,4 +8,5 @@
 >
 </app-topic-item> 
     
+</div>
 </div>

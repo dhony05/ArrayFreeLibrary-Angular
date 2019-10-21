@@ -12,6 +12,7 @@ export class TopicItemComponent implements OnInit {
   @Input() topic: Topic;
   constructor(private topicService:TopicService) { }
   @Output() deleteTopic: EventEmitter<Topic> = new EventEmitter();
+  
   ngOnInit() {
   }
 
@@ -28,11 +29,11 @@ export class TopicItemComponent implements OnInit {
        return classes;
   }
 
-  onDelete(topic){
+  onDelete(topic:Topic){
 
     this.deleteTopic.emit(topic);
     console.log("deleting topic");
   }
-  
+
 
 }

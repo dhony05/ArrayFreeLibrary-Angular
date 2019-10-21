@@ -24,4 +24,16 @@ export class TopicsComponent implements OnInit {
     console.log("deleting me");
   }
 
+  addTopic(topic:Topic){
+    // post request to the server throug service
+    // when we get the response back we add it to the UI
+    this.topicService.addTopic(topic).subscribe(topic => {
+    this.topics.push(topic);
+    this.topics = this.topics.filter(t => t.keyword !== topic.keyword);
+
+    console.log("adding topic")
+    })
+
+  }
+
 }

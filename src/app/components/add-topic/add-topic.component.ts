@@ -1,4 +1,5 @@
 import { Component, OnInit ,EventEmitter, Output} from '@angular/core';
+import { Topic } from 'src/app/models/topic';
 
 @Component({
   selector: 'app-add-topic',
@@ -6,6 +7,8 @@ import { Component, OnInit ,EventEmitter, Output} from '@angular/core';
   styleUrls: ['./add-topic.component.css']
 })
 export class AddTopicComponent implements OnInit {
+
+  @Output() addTopic: EventEmitter<any> = new EventEmitter();
 
   keyword: string;
   name:string;
@@ -24,6 +27,7 @@ export class AddTopicComponent implements OnInit {
   }
 
   onSubmit(){
+    this.toggleCollapse()
     const topic = {
       keyword: this.keyword,
       name: this.name,
@@ -32,6 +36,8 @@ export class AddTopicComponent implements OnInit {
       description:this.description
 
     }
+    this.addTopic.emit(topic);
+    
   }
 
 }

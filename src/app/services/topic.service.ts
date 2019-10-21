@@ -29,4 +29,10 @@ export class TopicService {
     return this.http.delete<Topic>(url,httpOptions);
 
   }
+
+  // adding topic
+  addTopic(topic:Topic):Observable<Topic>{
+    return this.http.post<Topic>(this.topicsURL, topic, httpOptions);
+
+  }
 }
