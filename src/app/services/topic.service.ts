@@ -6,7 +6,10 @@ import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
-  'Content-type': 'application/json'
+  'Content-type': 'application/json',
+  //'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
+
   })
 }
 @Injectable({
@@ -14,6 +17,7 @@ const httpOptions = {
 })
 export class TopicService {
   topicsURL:string = 'http://localhost:8080/topics';
+  
   topicsLimit = '?_limit=15';
 
   constructor(private  http:HttpClient) { }

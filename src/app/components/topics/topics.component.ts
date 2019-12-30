@@ -12,8 +12,9 @@ export class TopicsComponent implements OnInit {
   constructor(private topicService:TopicService ) { 
   }
   ngOnInit() {
-    this.topicService.getTopics().subscribe(topics => {
-      this.topics = topics;
+    console.log("here");
+    this.topicService.getTopics().subscribe((data: Topic[])=> {
+      this.topics = data;
     });
   }
 
@@ -27,13 +28,24 @@ export class TopicsComponent implements OnInit {
   addTopic(topic:Topic){
     // post request to the server throug service
     // when we get the response back we add it to the UI
-    this.topicService.addTopic(topic).subscribe(topic => {
-    this.topics.push(topic);
+    this.topicService.addTopic(topic).subscribe(() => {
+    this.getAll();
+    //this.topics = this.topics.filter(t => t.keyword !== topic.keyword);
+
+    //this.topics = this.topics.filter(t => t.keyword !== topic.keyword);
+    
+    
+    });
+  
+    
     this.topics = this.topics.filter(t => t.keyword !== topic.keyword);
 
-    console.log("adding topic")
-    })
+  }
 
+  getAll(){
+    this.topicService.getTopics().subscribe((data: Topic[]) =>{
+      this.topics=data;
+    });
   }
 
 }
